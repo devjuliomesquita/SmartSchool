@@ -15,9 +15,13 @@ import {MatButtonModule} from '@angular/material/button';
 import {MatTooltipModule} from '@angular/material/tooltip';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { TituloComponent } from './titulo/titulo.component';
+import {MatTableModule} from '@angular/material/table';
+import {MatFormFieldModule} from '@angular/material/form-field';
+import {MatCardModule} from '@angular/material/card';
+import {MatPaginatorModule} from '@angular/material/paginator';
 
 @NgModule({
-  declarations: [	
+  declarations: [
     AppComponent,
       NavegacaoComponent,
       AlunosComponent,
@@ -34,7 +38,11 @@ import { TituloComponent } from './titulo/titulo.component';
     MatIconModule,
     MatButtonModule,
     MatTooltipModule,
-    FlexLayoutModule
+    FlexLayoutModule,
+    MatTableModule,
+    MatFormFieldModule,
+    MatCardModule,
+    MatPaginatorModule
   ],
   providers: [],
   bootstrap: [AppComponent]
