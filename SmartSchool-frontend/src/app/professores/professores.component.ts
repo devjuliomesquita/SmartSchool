@@ -6,6 +6,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./professores.component.css']
 })
 export class ProfessoresComponent implements OnInit {
+  public titulo:string = 'Lista de Professores';
 
   constructor() { }
 

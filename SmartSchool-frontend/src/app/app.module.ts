@@ -14,15 +14,17 @@ import {MatIconModule} from '@angular/material/icon';
 import {MatButtonModule} from '@angular/material/button';
 import {MatTooltipModule} from '@angular/material/tooltip';
 import { FlexLayoutModule } from '@angular/flex-layout';
+import { TituloComponent } from './titulo/titulo.component';
 
 @NgModule({
-  declarations: [
+  declarations: [	
     AppComponent,
       NavegacaoComponent,
       AlunosComponent,
       ProfessoresComponent,
       PerfilComponent,
-      DashboardComponent
+      DashboardComponent,
+      TituloComponent
    ],
   imports: [
     BrowserModule,
