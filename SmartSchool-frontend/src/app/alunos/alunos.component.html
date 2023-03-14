@@ -1,13 +1,13 @@
 <mat-card>
   <mat-card-header>
-    <mat-toolbar color="warn">
+    <mat-toolbar color="primary">
       <span><app-titulo [titulo]="titulo"></app-titulo></span>
     </mat-toolbar>
   </mat-card-header>
 
   <mat-card-content>
 
-    <table mat-table [dataSource]="alunos" class="mat-elevation-z8">
+    <table mat-table [dataSource]="dataAluno" class="mat-elevation-z8">
 
       <!-- Id Column -->
       <ng-container matColumnDef="Id">
@@ -39,11 +39,30 @@
         <td mat-cell *matCellDef="let aluno"> {{aluno.email}} </td>
       </ng-container>
 
+      <!-- Açoes Column -->
+      <ng-container matColumnDef="acao">
+        <th mat-header-cell *matHeaderCellDef> Ações </th>
+        <td mat-cell *matCellDef="let aluno">
+          <button mat-icon-button color="primary" matTooltip="Informações">
+            <mat-icon>info</mat-icon>
+          </button>
+          <button mat-icon-button color="primary" matTooltip="Editar">
+            <mat-icon>edit</mat-icon>
+          </button>
+          <button mat-icon-button color="accent" matTooltip="Excluir">
+            <mat-icon>delete</mat-icon>
+          </button>
+        </td>
+      </ng-container>
+
       <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
       <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
 
     </table>
-
+    <mat-paginator  [pageSizeOptions]="[5, 10, 20]"
+                    showFirstLastButtons
+                    aria-label="Select page of periodic elements">
+    </mat-paginator>
 
   </mat-card-content>
 </mat-card>

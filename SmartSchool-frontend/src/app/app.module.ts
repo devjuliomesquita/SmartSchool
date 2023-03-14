@@ -20,6 +20,8 @@ import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatCardModule} from '@angular/material/card';
 import {MatPaginatorModule} from '@angular/material/paginator';
 
+
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -42,7 +44,7 @@ import {MatPaginatorModule} from '@angular/material/paginator';
     MatTableModule,
     MatFormFieldModule,
     MatCardModule,
-    MatPaginatorModule
+    MatPaginatorModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
