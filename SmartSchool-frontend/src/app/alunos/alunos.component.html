@@ -1,64 +1,90 @@
 <mat-card>
-  <mat-card-header>
-    <mat-toolbar color="primary">
-      <span><app-titulo [titulo]="titulo"></app-titulo></span>
-    </mat-toolbar>
+  <mat-card-header >
+
+    <mat-card-title><app-titulo [titulo]="titulo"></app-titulo></mat-card-title>
+    <mat-card-subtitle>
+      <div *ngIf="alunoSelecionado">
+        aluno selecionado: {{alunoSelecionado}}
+        <p>
+          <button mat-raised-button color="warn" (click)="AlunoDeselecionado()">Voltar</button>
+        </p>
+
+      </div>
+      <div *ngIf="!alunoSelecionado">
+        Nenhum aluno selecionado. Click para selecionar.
+      </div>
+    </mat-card-subtitle>
   </mat-card-header>
 
   <mat-card-content>
 
-    <table mat-table [dataSource]="dataAluno" class="mat-elevation-z8">
+  <div *ngIf="alunoSelecionado">
+    <mat-form-field appearance="outline">
+      <mat-label>Outline form field</mat-label>
+      <input matInput placeholder="Placeholder">
+      <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
+      <mat-hint>Hint</mat-hint>
+    </mat-form-field>
 
-      <!-- Id Column -->
-      <ng-container matColumnDef="Id">
-        <th mat-header-cell *matHeaderCellDef> ID </th>
-        <td mat-cell *matCellDef="let aluno"> {{aluno.Id}} </td>
-      </ng-container>
+  </div>
+  <div *ngIf="!alunoSelecionado">
 
-      <!-- Nome Column -->
-      <ng-container matColumnDef="nome">
-        <th mat-header-cell *matHeaderCellDef> Nome </th>
-        <td mat-cell *matCellDef="let aluno"> {{aluno.nome}} </td>
-      </ng-container>
+      <table mat-table [dataSource]="dataAluno" class="mat-elevation-z8">
 
-      <!-- Sobrenome Column -->
-      <ng-container matColumnDef="sobrenome">
-        <th mat-header-cell *matHeaderCellDef> Sobrenome </th>
-        <td mat-cell *matCellDef="let aluno"> {{aluno.sobrenome}} </td>
-      </ng-container>
+        <!-- Id Column -->
+        <ng-container matColumnDef="Id">
+          <th mat-header-cell *matHeaderCellDef> ID </th>
+          <td mat-cell *matCellDef="let aluno"> {{aluno.Id}} </td>
+        </ng-container>
 
-      <!-- Telefone Column -->
-      <ng-container matColumnDef="telefone">
-        <th mat-header-cell *matHeaderCellDef> Telefone </th>
-        <td mat-cell *matCellDef="let aluno"> {{aluno.telefone}} </td>
-      </ng-container>
+        <!-- Nome Column -->
+        <ng-container matColumnDef="nome">
+          <th mat-header-cell *matHeaderCellDef> Nome </th>
+          <td mat-cell *matCellDef="let aluno"> {{aluno.nome}} </td>
+        </ng-container>
 
-      <!-- Email Column -->
-      <ng-container matColumnDef="email">
-        <th mat-header-cell *matHeaderCellDef> Email </th>
-        <td mat-cell *matCellDef="let aluno"> {{aluno.email}} </td>
-      </ng-container>
+        <!-- Sobrenome Column -->
+        <ng-container matColumnDef="sobrenome">
+          <th mat-header-cell *matHeaderCellDef> Sobrenome </th>
+          <td mat-cell *matCellDef="let aluno"> {{aluno.sobrenome}} </td>
+        </ng-container>
 
-      <!-- Açoes Column -->
-      <ng-container matColumnDef="acao">
-        <th mat-header-cell *matHeaderCellDef> Ações </th>
-        <td mat-cell *matCellDef="let aluno">
-          <button mat-icon-button color="primary" matTooltip="Informações">
-            <mat-icon>info</mat-icon>
-          </button>
-          <button mat-icon-button color="primary" matTooltip="Editar">
-            <mat-icon>edit</mat-icon>
-          </button>
-          <button mat-icon-button color="accent" matTooltip="Excluir">
-            <mat-icon>delete</mat-icon>
-          </button>
-        </td>
-      </ng-container>
+        <!-- Telefone Column -->
+        <ng-container matColumnDef="telefone">
+          <th mat-header-cell *matHeaderCellDef> Telefone </th>
+          <td mat-cell *matCellDef="let aluno"> {{aluno.telefone}} </td>
+        </ng-container>
 
-      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+        <!-- Email Column -->
+        <ng-container matColumnDef="email">
+          <th mat-header-cell *matHeaderCellDef> Email </th>
+          <td mat-cell *matCellDef="let aluno"> {{aluno.email}} </td>
+        </ng-container>
 
-    </table>
+        <!-- Açoes Column -->
+        <ng-container matColumnDef="acao">
+          <th mat-header-cell *matHeaderCellDef> Ações </th>
+          <td mat-cell *matCellDef="let aluno">
+            <button mat-icon-button color="primary" matTooltip="Informações">
+              <mat-icon>info</mat-icon>
+            </button>
+            <button mat-icon-button color="primary" matTooltip="Editar">
+              <mat-icon>edit</mat-icon>
+            </button>
+            <button mat-icon-button color="accent" matTooltip="Excluir">
+              <mat-icon>delete</mat-icon>
+            </button>
+          </td>
+        </ng-container>
+
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr
+        mat-row
+        (click)="AlunoSelecionado(row)"
+        *matRowDef="let row; columns: displayedColumns;"></tr>
+
+      </table>
+  </div>
   </mat-card-content>
 </mat-card>
 

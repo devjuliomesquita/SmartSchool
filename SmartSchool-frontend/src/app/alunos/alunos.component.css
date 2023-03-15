@@ -1,3 +1,10 @@
 .mat-column-acao {
   text-align: center;
 }
+.mat-mdc-row .mat-mdc-cell {
+  cursor: pointer;
+}
+.mat-mdc-row:hover .mat-mdc-cell {
+  background-color: rgb(211, 204, 204);
+  font-weight:500 ;
+}
