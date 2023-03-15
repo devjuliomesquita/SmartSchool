@@ -2,6 +2,7 @@ import { Component, OnInit, ViewChild,  } from '@angular/core';
 import { Aluno } from './model/aluno';
 import {MatTableDataSource} from '@angular/material/table';
 import { MatPaginator } from '@angular/material/paginator';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-alunos',
@@ -9,6 +10,7 @@ import { MatPaginator } from '@angular/material/paginator';
   styleUrls: ['./alunos.component.css']
 })
 export class AlunosComponent implements OnInit {
+  public alunoForm!:FormGroup;
   public titulo:string = 'Área do Aluno';
   public alunoSelecionado?: Aluno;
 
@@ -23,11 +25,26 @@ export class AlunosComponent implements OnInit {
     {Id: 8, nome: "Júlio César8", sobrenome: "Mesquita Camilo", telefone: "85 996816053", email: "juliocesarmcamilo@gmail.com" },
   ];
   public displayedColumns:string[] = ['Id', 'nome', 'sobrenome', 'telefone', 'email', 'acao'];
+  constructor(private fb: FormBuilder) {
+    this.CriarFormulario();
+  }
 
+  ngOnInit() {
+    this.dataAluno.paginator = this.paginator;
+  }
 
+  CriarFormulario( ){
+    this.alunoForm = this.fb.group({
+      nome: ['',Validators.required],
+      sobrenome: ['',Validators.required],
+      telefone: ['',Validators.required],
+      email: ['',Validators.required],
+    });
+  }
   AlunoSelecionado(aluno: Aluno){
     this.alunoSelecionado = aluno;
-    this.displayedColumns.pop();
+    this.alunoForm.patchValue(aluno)
+    this.displayedColumns = ['Id', 'nome', 'sobrenome', 'telefone', 'email'];
   };
   AlunoDeselecionado(){
     this.alunoSelecionado = undefined;
@@ -39,10 +56,6 @@ export class AlunosComponent implements OnInit {
   dataAluno = new MatTableDataSource<Aluno>(this.alunos);
   @ViewChild(MatPaginator) paginator!:MatPaginator;
   // Fim do teste de paginação | Voltar depois
-  constructor() { }
 
-  ngOnInit() {
-    this.dataAluno.paginator = this.paginator;
-  }
 
 }
