@@ -1,7 +1,7 @@
 <mat-toolbar color="primary">
   <span>Smart School</span>
   <span fxFlex></span>
-  <button mat-icon-button aria-label="dashboard" matTooltip="Dashboard" routerLink="/dashboard" >
+  <button mat-icon-button  aria-label="dashboard" matTooltip="Dashboard" routerLink="/dashboard" >
     <mat-icon>dashboard</mat-icon>
   </button>
   <button mat-icon-button aria-label="alunos" matTooltip="Alunos" routerLink="/alunos">
@@ -10,8 +10,13 @@
   <button mat-icon-button aria-label="professores" matTooltip="Professores" routerLink="/professores">
     <mat-icon>person</mat-icon>
   </button>
-  <button mat-icon-button aria-label="perfil" matTooltip="Perfil" routerLink="/perfil">
-    <mat-icon>account_circle</mat-icon>
-  </button>
+
+  <button mat-button [matMenuTriggerFor]="menu">Júlio César </button>
+<mat-menu #menu="matMenu">
+  <button mat-menu-item routerLink="/perfil">Perfil</button>
+  <button mat-menu-item>Sair</button>
+</mat-menu>
+
+
 
 </mat-toolbar>

@@ -1,4 +1,76 @@
-<app-titulo [titulo]="titulo"></app-titulo>
-<p>
-  professores works!
-</p>
+<mat-card>
+  <mat-card-header>
+    <mat-toolbar color="primary">
+      <span><app-titulo [titulo]="titulo"></app-titulo></span>
+    </mat-toolbar>
+  </mat-card-header>
+
+  <mat-card-content>
+
+    <table mat-table [dataSource]="professores" class="mat-elevation-z8">
+
+      <!-- Id Column -->
+      <ng-container matColumnDef="Id">
+        <th mat-header-cell *matHeaderCellDef> ID </th>
+        <td mat-cell *matCellDef="let professor"> {{professor.Id}} </td>
+      </ng-container>
+
+      <!-- Nome Column -->
+      <ng-container matColumnDef="nome">
+        <th mat-header-cell *matHeaderCellDef> Nome </th>
+        <td mat-cell *matCellDef="let professor"> {{professor.nome}} </td>
+      </ng-container>
+
+      <!-- Sobrenome Column -->
+      <ng-container matColumnDef="sobrenome">
+        <th mat-header-cell *matHeaderCellDef> Sobrenome </th>
+        <td mat-cell *matCellDef="let professor"> {{professor.sobrenome}} </td>
+      </ng-container>
+
+      <!-- Telefone Column -->
+      <ng-container matColumnDef="telefone">
+        <th mat-header-cell *matHeaderCellDef> Telefone </th>
+        <td mat-cell *matCellDef="let professor"> {{professor.telefone}} </td>
+      </ng-container>
+
+      <!-- Email Column -->
+      <ng-container matColumnDef="email">
+        <th mat-header-cell *matHeaderCellDef> Email </th>
+        <td mat-cell *matCellDef="let professor"> {{professor.email}} </td>
+      </ng-container>
+
+      <!-- Disciplina Column -->
+      <ng-container matColumnDef="disciplina">
+        <th mat-header-cell *matHeaderCellDef> Disciplina </th>
+        <td mat-cell *matCellDef="let professor"> {{professor.disciplina}} </td>
+      </ng-container>
+
+      <!-- Açoes Column -->
+      <ng-container matColumnDef="acao">
+        <th mat-header-cell *matHeaderCellDef> Ações </th>
+        <td mat-cell *matCellDef="let professor">
+          <button mat-icon-button color="primary" matTooltip="Informações">
+            <mat-icon>info</mat-icon>
+          </button>
+          <button mat-icon-button color="primary" matTooltip="Editar">
+            <mat-icon>edit</mat-icon>
+          </button>
+          <button mat-icon-button color="accent" matTooltip="Excluir">
+            <mat-icon>delete</mat-icon>
+          </button>
+        </td>
+      </ng-container>
+
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+
+    </table>
+  </mat-card-content>
+</mat-card>
+
+
+
+
+
+
+

@@ -19,6 +19,7 @@ import {MatTableModule} from '@angular/material/table';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatCardModule} from '@angular/material/card';
 import {MatPaginatorModule} from '@angular/material/paginator';
+import {MatMenuModule} from '@angular/material/menu';
 
 
 
@@ -45,6 +46,7 @@ import {MatPaginatorModule} from '@angular/material/paginator';
     MatFormFieldModule,
     MatCardModule,
     MatPaginatorModule,
+    MatMenuModule
   ],
   providers: [],
   bootstrap: [AppComponent]
