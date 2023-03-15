@@ -3,6 +3,7 @@ import { Aluno } from './model/aluno';
 import {MatTableDataSource} from '@angular/material/table';
 import { MatPaginator } from '@angular/material/paginator';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { MatDialog } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-alunos',
@@ -25,7 +26,9 @@ export class AlunosComponent implements OnInit {
     {Id: 8, nome: "Júlio César8", sobrenome: "Mesquita Camilo", telefone: "85 996816053", email: "juliocesarmcamilo@gmail.com" },
   ];
   public displayedColumns:string[] = ['Id', 'nome', 'sobrenome', 'telefone', 'email', 'acao'];
-  constructor(private fb: FormBuilder) {
+  constructor(
+    private fb: FormBuilder,
+    public dialog: MatDialog) {
     this.CriarFormulario();
   }
 
@@ -33,6 +36,7 @@ export class AlunosComponent implements OnInit {
     this.dataAluno.paginator = this.paginator;
   }
 
+  
   CriarFormulario( ){
     this.alunoForm = this.fb.group({
       nome: ['',Validators.required],
@@ -59,3 +63,4 @@ export class AlunosComponent implements OnInit {
 
 
 }
+
