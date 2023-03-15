@@ -5,6 +5,8 @@ import { MatPaginator } from '@angular/material/paginator';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
 import { AlunoService } from './service/aluno.service';
+import { ObserversModule } from '@angular/cdk/observers';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-alunos',
@@ -15,7 +17,7 @@ export class AlunosComponent implements OnInit {
   public alunoForm!:FormGroup;
   public titulo:string = 'Área do Aluno';
   public alunoSelecionado?: Aluno;
-  public alunos: Aluno [] = [];
+  public alunos: Observable<Aluno[]>;
   public displayedColumns:string[] = ['Id', 'nome', 'sobrenome', 'telefone', 'email', 'acao'];
 
   constructor(
@@ -24,10 +26,11 @@ export class AlunosComponent implements OnInit {
     )
     {
       this.CriarFormulario();
+      this.alunos = this.alunoService.alunoList();
     }
 
   ngOnInit(): void {
-    this.alunos = this.alunoService.alunoList();
+
   }
 
   // alunoList(): void {
