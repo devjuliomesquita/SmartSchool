@@ -22,15 +22,18 @@ export class AlunosComponent implements OnInit {
     {Id: 7, nome: "Júlio César7", sobrenome: "Mesquita Camilo", telefone: "85 996816053", email: "juliocesarmcamilo@gmail.com" },
     {Id: 8, nome: "Júlio César8", sobrenome: "Mesquita Camilo", telefone: "85 996816053", email: "juliocesarmcamilo@gmail.com" },
   ];
+  public displayedColumns:string[] = ['Id', 'nome', 'sobrenome', 'telefone', 'email', 'acao'];
 
-  displayedColumns = ['Id', 'nome', 'sobrenome', 'telefone', 'email', 'acao'];
 
   AlunoSelecionado(aluno: Aluno){
     this.alunoSelecionado = aluno;
+    this.displayedColumns.pop();
   };
   AlunoDeselecionado(){
     this.alunoSelecionado = undefined;
+    this.displayedColumns.push('acao');
   }
+
 
   // teste de paginação | voltar depois
   dataAluno = new MatTableDataSource<Aluno>(this.alunos);
