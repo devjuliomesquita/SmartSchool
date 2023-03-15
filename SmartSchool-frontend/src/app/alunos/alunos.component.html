@@ -63,7 +63,7 @@
       </div>
       <div fxFlex>
 
-          <table mat-table [dataSource]="dataAluno" class="mat-elevation-z8 ">
+          <table mat-table [dataSource]="alunos" class="mat-elevation-z8 ">
 
             <!-- Id Column -->
             <ng-container matColumnDef="Id">
@@ -118,11 +118,7 @@
             *matRowDef="let row; columns: displayedColumns;"></tr>
 
           </table>
-          <h1 mat-dialog-title>Dialog with elements</h1>
-          <div mat-dialog-content>This dialog showcases the title, close, content and actions elements.</div>
-          <div mat-dialog-actions>
-          <button mat-button mat-dialog-close>Close</button>
-          </div>
+
 
       </div>
 
