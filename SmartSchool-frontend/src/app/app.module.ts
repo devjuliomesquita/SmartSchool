@@ -25,18 +25,20 @@ import { ReactiveFormsModule } from '@angular/forms';
 import {MatDialogModule} from '@angular/material/dialog';
 import { HttpClientModule } from '@angular/common/http';
 import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
+import { ErrorDialogComponent } from './error-dialog/error-dialog.component';
 
 
 
 @NgModule({
-  declarations: [
+  declarations: [	
     AppComponent,
       NavegacaoComponent,
       AlunosComponent,
       ProfessoresComponent,
       PerfilComponent,
       DashboardComponent,
-      TituloComponent
+      TituloComponent,
+      ErrorDialogComponent
    ],
   imports: [
     BrowserModule,

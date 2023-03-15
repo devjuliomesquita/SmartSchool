@@ -6,7 +6,9 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
 import { AlunoService } from './service/aluno.service';
 import { ObserversModule } from '@angular/cdk/observers';
-import { Observable } from 'rxjs';
+import { Observable, catchError, of } from 'rxjs';
+import { ErrorDialogComponent } from '../error-dialog/error-dialog.component';
+
 
 @Component({
   selector: 'app-alunos',
@@ -22,17 +24,31 @@ export class AlunosComponent implements OnInit {
 
   constructor(
     private alunoService:AlunoService,
-    private fb: FormBuilder
+    private fb: FormBuilder,
+    public dialog: MatDialog
+
     )
     {
       this.CriarFormulario();
-      this._alunos = this.alunoService.alunoList();
+      this._alunos = this.alunoService.alunoList()
+      .pipe(
+        catchError(error => {
+          this.onError('Erro ao carregar os alunos.');
+          return of([])
+        })
+
+      );
     }
 
   ngOnInit(): void {
 
   }
 
+  onError(errorMsg:string) {
+    this.dialog.open(ErrorDialogComponent, {
+      data: errorMsg
+    });
+  }
   // alunoList(): void {
   //   this.alunoService.alunoList();
   // }
