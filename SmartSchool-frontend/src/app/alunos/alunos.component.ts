@@ -10,7 +10,7 @@ import { MatPaginator } from '@angular/material/paginator';
 })
 export class AlunosComponent implements OnInit {
   public titulo:string = 'Área do Aluno';
-  public alunoSelecionado?: string;
+  public alunoSelecionado?: Aluno;
 
   public alunos: Aluno [] = [
     {Id: 1, nome: "Júlio César1", sobrenome: "Mesquita Camilo", telefone: "85 996816053", email: "juliocesarmcamilo@gmail.com" },
@@ -26,10 +26,10 @@ export class AlunosComponent implements OnInit {
   displayedColumns = ['Id', 'nome', 'sobrenome', 'telefone', 'email', 'acao'];
 
   AlunoSelecionado(aluno: Aluno){
-    this.alunoSelecionado = aluno.nome;
+    this.alunoSelecionado = aluno;
   };
   AlunoDeselecionado(){
-    this.alunoSelecionado = '';
+    this.alunoSelecionado = undefined;
   }
 
   // teste de paginação | voltar depois
