@@ -17,7 +17,7 @@ export class AlunosComponent implements OnInit {
   public alunoForm!:FormGroup;
   public titulo:string = 'Área do Aluno';
   public alunoSelecionado?: Aluno;
-  public alunos: Observable<Aluno[]>;
+  public _alunos: Observable<Aluno[]>;
   public displayedColumns:string[] = ['Id', 'nome', 'sobrenome', 'telefone', 'email', 'acao'];
 
   constructor(
@@ -26,7 +26,7 @@ export class AlunosComponent implements OnInit {
     )
     {
       this.CriarFormulario();
-      this.alunos = this.alunoService.alunoList();
+      this._alunos = this.alunoService.alunoList();
     }
 
   ngOnInit(): void {

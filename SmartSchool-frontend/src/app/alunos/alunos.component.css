@@ -22,4 +22,11 @@
 .table-tamanho2 {
   width: 50%;
 }
+.spiner{
+  padding: 25px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: rgba(0, 0, 0, 0.15);
+}
 
