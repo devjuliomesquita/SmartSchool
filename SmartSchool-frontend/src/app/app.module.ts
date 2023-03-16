@@ -26,11 +26,12 @@ import {MatDialogModule} from '@angular/material/dialog';
 import { HttpClientModule } from '@angular/common/http';
 import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 import { ErrorDialogComponent } from './error-dialog/error-dialog.component';
+import { AlunosformComponent } from './alunosform/alunosform.component';
 
 
 
 @NgModule({
-  declarations: [	
+  declarations: [		
     AppComponent,
       NavegacaoComponent,
       AlunosComponent,
@@ -38,7 +39,8 @@ import { ErrorDialogComponent } from './error-dialog/error-dialog.component';
       PerfilComponent,
       DashboardComponent,
       TituloComponent,
-      ErrorDialogComponent
+      ErrorDialogComponent,
+      AlunosformComponent
    ],
   imports: [
     BrowserModule,

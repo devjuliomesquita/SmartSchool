@@ -14,7 +14,7 @@ alunoList() {
   return this.httpCliente.get<Aluno[]>(this.API)
   .pipe(
     first(),
-    delay(5000),
+    delay(0),
     tap(alunos => console.log(alunos))
   );
 };
