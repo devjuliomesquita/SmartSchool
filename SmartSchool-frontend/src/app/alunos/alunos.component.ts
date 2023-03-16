@@ -16,7 +16,7 @@ import { ActivatedRoute, Router } from '@angular/router';
   styleUrls: ['./alunos.component.css'],
 })
 export class AlunosComponent implements OnInit {
-  public alunoForm!: FormGroup;
+  public alunoFormDetalhes!: FormGroup;
   public titulo: string = 'Área do Aluno';
   public alunoSelecionado?: Aluno;
   public _alunos: Observable<Aluno[]>;
@@ -61,7 +61,7 @@ export class AlunosComponent implements OnInit {
   //   this.alunoService.alunoList();
   // }
   CriarFormulario() {
-    this.alunoForm = this.fb.group({
+    this.alunoFormDetalhes = this.fb.group({
       nome: ['', Validators.required],
       sobrenome: ['', Validators.required],
       telefone: ['', Validators.required],
@@ -70,12 +70,12 @@ export class AlunosComponent implements OnInit {
   }
   AlunoSelecionado(aluno: Aluno) {
     this.alunoSelecionado = aluno;
-    this.alunoForm.patchValue(aluno);
-    this.displayedColumns = ['Id', 'nome', 'sobrenome', 'telefone', 'email'];
+    this.alunoFormDetalhes.patchValue(aluno);
+    this.displayedColumns = ['Id', 'nome', 'sobrenome', 'telefone'];
   }
   AlunoDeselecionado() {
     this.alunoSelecionado = undefined;
-    this.displayedColumns.push('acao');
+    this.displayedColumns.push('email','acao');
   }
 
   // teste de paginação | voltar depois

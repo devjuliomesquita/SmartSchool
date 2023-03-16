@@ -1,28 +1,30 @@
 <mat-card>
   <mat-card-header>
-    <mat-card-title><app-titulo [titulo]="titulo"></app-titulo></mat-card-title>
-    <mat-card-subtitle>
-      <div
-        *ngIf="alunoSelecionado"
-        fxLayout="row"
-        fxLayoutAlign="space-between center"
-      >
-        <h3>Cód. aluno selecionado: ID {{ alunoSelecionado.Id }}°</h3>
-        <p>
-          <button mat-raised-button color="warn" (click)="AlunoDeselecionado()">
-            Lista de Alunos
-          </button>
-        </p>
-      </div>
-      <div *ngIf="!alunoSelecionado">
-        <h3>Nenhum aluno selecionado. Click para selecionar.</h3>
-      </div>
-    </mat-card-subtitle>
+    <mat-toolbar color="primary">
+      <mat-card-title
+        ><app-titulo [titulo]="titulo"></app-titulo
+      ></mat-card-title>
+    </mat-toolbar>
   </mat-card-header>
 
   <mat-card-content fxFlexFill>
-    <div *ngIf="alunoSelecionado" fxFlex="40">
-      <form action="" class="example-form" [formGroup]="alunoForm">
+    <div *ngIf="alunoSelecionado" fxFlex="40" class="form-detalhes">
+      <div class="form-header">
+        <h2>Cód. aluno selecionado: ID {{ alunoSelecionado.Id }}°</h2>
+
+        <button
+          mat-raised-button
+          color="warn"
+          (click)="AlunoDeselecionado()"
+          fxLayout="row" fxLayoutAlign="end center"
+        >
+          Lista de Alunos
+        </button>
+      </div>
+
+
+
+      <form action="" class="example-form" [formGroup]="alunoFormDetalhes">
         <p>
           <mat-form-field appearance="outline" class="example-full-width">
             <mat-label>Nome</mat-label>
@@ -71,20 +73,24 @@
             <mat-hint>E-mail do Aluno</mat-hint>
           </mat-form-field>
         </p>
-        <mat-card-actions fxLayout="row" fxLayoutAlign="space-around start">
+
+      </form>
+      <div>
+        <mat-card-actions align="end">
           <button
             mat-raised-button
             color="primary"
-            [disabled]="!alunoForm.valid"
+            [disabled]="!alunoFormDetalhes.valid"
+            class="btn-margem"
           >
             Salvar
           </button>
-          <button mat-raised-button color="accent">Editar</button>
-          <button mat-raised-button color="warn">Excluir</button>
+          <button mat-raised-button color="accent" class="btn-margem">Editar</button>
+          <button mat-raised-button color="warn" class="btn-margem">Desativar</button>
         </mat-card-actions>
-      </form>
-      <div></div>
+      </div>
     </div>
+
     <div fxFlex *ngIf="_alunos | async as alunos; else load">
       <table mat-table [dataSource]="alunos" class="mat-elevation-z8">
         <!-- Id Column -->
@@ -108,7 +114,8 @@
         <!-- Telefone Column -->
         <ng-container matColumnDef="telefone">
           <th mat-header-cell *matHeaderCellDef>Telefone</th>
-          <td mat-cell *matCellDef="let aluno">{{ aluno.telefone }}
+          <td mat-cell *matCellDef="let aluno">
+            {{ aluno.telefone }}
             <mat-icon>phone</mat-icon>
           </td>
         </ng-container>
@@ -116,7 +123,8 @@
         <!-- Email Column -->
         <ng-container matColumnDef="email">
           <th mat-header-cell *matHeaderCellDef>Email</th>
-          <td mat-cell *matCellDef="let aluno">{{ aluno.email }}
+          <td mat-cell *matCellDef="let aluno">
+            {{ aluno.email }}
             <mat-icon>email</mat-icon>
           </td>
         </ng-container>
@@ -124,8 +132,13 @@
         <!-- Açoes Column -->
         <ng-container matColumnDef="acao">
           <mat-header-cell *matHeaderCellDef>
-            <button mat-mini-fab color="primary" aria-label="Adicionar mais Alunos" (click)="onAdd()">
-              <mat-icon >add</mat-icon>
+            <button
+              mat-mini-fab
+              color="primary"
+              aria-label="Adicionar mais Alunos"
+              (click)="onAdd()"
+            >
+              <mat-icon>add</mat-icon>
             </button>
           </mat-header-cell>
           <mat-cell *matCellDef="let aluno">
