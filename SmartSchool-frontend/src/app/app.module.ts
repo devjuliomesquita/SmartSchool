@@ -31,11 +31,13 @@ import { ProfessorformComponent } from './professoresform/professorform.componen
 import {MatChipsModule} from '@angular/material/chips';
 import {MatAutocompleteModule} from '@angular/material/autocomplete';
 import { CancelDialogComponent } from './cancel-dialog/cancel-dialog.component';
+import { CursoDialogComponent } from './curso-dialog/curso-dialog.component';
+import { AlunoProfessorDialogComponent } from './alunoProfessor-dialog/alunoProfessor-dialog.component';
 
 
 
 @NgModule({
-  declarations: [	
+  declarations: [			
     AppComponent,
       NavegacaoComponent,
       AlunosComponent,
@@ -46,7 +48,9 @@ import { CancelDialogComponent } from './cancel-dialog/cancel-dialog.component';
       ErrorDialogComponent,
       AlunosformComponent,
       ProfessorformComponent,
-      CancelDialogComponent
+      CancelDialogComponent,
+      CursoDialogComponent,
+      AlunoProfessorDialogComponent
    ],
   imports: [
     BrowserModule,

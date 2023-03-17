@@ -10,6 +10,8 @@ import { Observable, catchError, of } from 'rxjs';
 import { ErrorDialogComponent } from '../error-dialog/error-dialog.component';
 import { ActivatedRoute, Router } from '@angular/router';
 import { CancelDialogComponent } from '../cancel-dialog/cancel-dialog.component';
+import { CursoDialogComponent } from '../curso-dialog/curso-dialog.component';
+import { AlunoProfessorDialogComponent } from '../alunoProfessor-dialog/alunoProfessor-dialog.component';
 
 @Component({
   selector: 'app-alunos',
@@ -64,6 +66,12 @@ export class AlunosComponent implements OnInit {
       data: aluno.nome
     });
   }
+  onCurso():void{
+    this.dialog.open(CursoDialogComponent);
+  }
+  onAlunoProfessor():void {
+    this.dialog.open(AlunoProfessorDialogComponent);
+  }
   CriarFormulario() {
     this.alunoFormDetalhes = this.fb.group({
       nome: ['', Validators.required],
@@ -75,11 +83,11 @@ export class AlunosComponent implements OnInit {
   AlunoSelecionado(aluno: Aluno) {
     this.alunoSelecionado = aluno;
     this.alunoFormDetalhes.patchValue(aluno);
-    this.displayedColumns = ['Id', 'nome', 'sobrenome', 'telefone'];
+    this.displayedColumns = ['Id', 'nome', 'sobrenome', 'telefone','acao'];
   }
   AlunoDeselecionado() {
     this.alunoSelecionado = undefined;
-    this.displayedColumns.push('email','acao');
+    this.displayedColumns = ['Id', 'nome', 'sobrenome', 'telefone', 'email','acao'];
   }
 
   // teste de paginação | voltar depois

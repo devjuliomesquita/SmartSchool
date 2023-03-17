@@ -144,10 +144,10 @@
             </button>
           </mat-header-cell>
           <mat-cell *matCellDef="let aluno" >
-            <button mat-icon-button color="primary" matTooltip="Professores">
+            <button mat-icon-button color="primary" matTooltip="Professores" (click)="onAlunoProfessor()">
               <mat-icon>person</mat-icon>
             </button>
-            <button mat-icon-button color="primary" matTooltip="Disciplinas">
+            <button mat-icon-button color="primary" matTooltip="Disciplinas" (click)="onCurso()">
               <mat-icon>book</mat-icon>
             </button>
             <button mat-icon-button color="accent" matTooltip="Desabilitar" (click)="onCancel(aluno)">
