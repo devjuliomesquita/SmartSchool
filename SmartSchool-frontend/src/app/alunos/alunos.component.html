@@ -140,7 +140,7 @@
               (click)="onAdd()"
 
             >
-              <mat-icon>plus_one</mat-icon> 
+              <mat-icon>plus_one</mat-icon>
             </button>
           </mat-header-cell>
           <mat-cell *matCellDef="let aluno" >
@@ -150,8 +150,8 @@
             <button mat-icon-button color="primary" matTooltip="Disciplinas">
               <mat-icon>book</mat-icon>
             </button>
-            <button mat-icon-button color="accent" matTooltip="Desabilitar">
-              <mat-icon>delete</mat-icon>
+            <button mat-icon-button color="accent" matTooltip="Desabilitar" (click)="onCancel(aluno)">
+              <mat-icon >delete</mat-icon>
             </button>
           </mat-cell>
         </ng-container>

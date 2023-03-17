@@ -9,6 +9,7 @@ import { ObserversModule } from '@angular/cdk/observers';
 import { Observable, catchError, of } from 'rxjs';
 import { ErrorDialogComponent } from '../error-dialog/error-dialog.component';
 import { ActivatedRoute, Router } from '@angular/router';
+import { CancelDialogComponent } from '../cancel-dialog/cancel-dialog.component';
 
 @Component({
   selector: 'app-alunos',
@@ -43,6 +44,7 @@ export class AlunosComponent implements OnInit {
         return of([]);
       })
     );
+
   }
 
   onAdd() {
@@ -57,9 +59,11 @@ export class AlunosComponent implements OnInit {
       data: errorMsg,
     });
   }
-  // alunoList(): void {
-  //   this.alunoService.alunoList();
-  // }
+  onCancel(aluno: Aluno){
+    this.dialog.open(CancelDialogComponent,{
+      data: aluno.nome
+    });
+  }
   CriarFormulario() {
     this.alunoFormDetalhes = this.fb.group({
       nome: ['', Validators.required],

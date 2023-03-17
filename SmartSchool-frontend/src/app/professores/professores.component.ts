@@ -30,7 +30,7 @@ export class ProfessoresComponent implements OnInit {
     this.CriarFormulario();
     this._professor = this.professorService.ProfessorList().pipe(
       catchError((error) => {
-        this.onError('Erro ao carregar os alunos.');
+        this.onError('Erro ao carregar lista de professores.');
         return of([]);
       })
     );
