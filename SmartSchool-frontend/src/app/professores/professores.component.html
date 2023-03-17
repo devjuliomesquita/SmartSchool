@@ -1,76 +1,195 @@
 <mat-card>
   <mat-card-header>
     <mat-toolbar color="primary">
-      <span><app-titulo [titulo]="titulo"></app-titulo></span>
+      <mat-card-title
+        ><app-titulo [titulo]="titulo"></app-titulo
+      ></mat-card-title>
     </mat-toolbar>
   </mat-card-header>
 
-  <mat-card-content>
+  <mat-card-content fxFlexFill>
+    <div *ngIf="professorSelecionado" fxFlex="40" class="form-detalhes">
+      <div class="form-header">
+        <h2>Cód. prof. selecionado: ID {{ professorSelecionado.Id }}°</h2>
 
-    <table mat-table [dataSource]="professores" class="mat-elevation-z8">
+        <button
+          mat-raised-button
+          color="warn"
+          (click)="ProfessorDeselecionado()"
+          fxLayout="row" fxLayoutAlign="end center"
+        >
+          Lista Professores
+        </button>
+      </div>
 
-      <!-- Id Column -->
-      <ng-container matColumnDef="Id">
-        <th mat-header-cell *matHeaderCellDef> ID </th>
-        <td mat-cell *matCellDef="let professor"> {{professor.Id}} </td>
-      </ng-container>
 
-      <!-- Nome Column -->
-      <ng-container matColumnDef="nome">
-        <th mat-header-cell *matHeaderCellDef> Nome </th>
-        <td mat-cell *matCellDef="let professor"> {{professor.nome}} </td>
-      </ng-container>
 
-      <!-- Sobrenome Column -->
-      <ng-container matColumnDef="sobrenome">
-        <th mat-header-cell *matHeaderCellDef> Sobrenome </th>
-        <td mat-cell *matCellDef="let professor"> {{professor.sobrenome}} </td>
-      </ng-container>
+      <form action="" class="example-form" [formGroup]="professorFormDetalhes">
+        <p>
+          <mat-form-field appearance="outline" class="example-full-width">
+            <mat-label>Nome</mat-label>
+            <input
+              matInput
+              placeholder="Nome do Professor"
+              formControlName="nome"
+            />
+            <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
+            <mat-hint>Nome do Professor</mat-hint>
+          </mat-form-field>
+        </p>
+        <p>
+          <mat-form-field appearance="outline" class="example-full-width">
+            <mat-label>Sobrenome</mat-label>
+            <input
+              matInput
+              placeholder="Sobrenome do Professor"
+              formControlName="sobrenome"
+            />
+            <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
+            <mat-hint>Sobrenome do Professor</mat-hint>
+          </mat-form-field>
+        </p>
+        <p>
+          <mat-form-field appearance="outline" class="example-full-width">
+            <mat-label>Telefone</mat-label>
+            <input
+              matInput
+              placeholder="Telefone do Professor"
+              formControlName="telefone"
+            />
+            <mat-icon matSuffix>phone</mat-icon>
+            <mat-hint>Telefone do Professor</mat-hint>
+          </mat-form-field>
+        </p>
+        <p>
+          <mat-form-field appearance="outline" class="example-full-width">
+            <mat-label>E-mail</mat-label>
+            <input
+              matInput
+              placeholder="E-mail do Professor"
+              formControlName="email"
+            />
+            <mat-icon matSuffix>email</mat-icon>
+            <mat-hint>E-mail do Professor</mat-hint>
+          </mat-form-field>
+        </p>
+        <p>
+          <mat-form-field appearance="outline" class="example-full-width">
+            <mat-label>Disciplina</mat-label>
+            <input
+              matInput
+              placeholder="Disciplina do Professor"
+              formControlName="disciplina"
+            />
+            <mat-icon matSuffix>book</mat-icon>
+            <mat-hint>Disciplinado Professor</mat-hint>
+          </mat-form-field>
+        </p>
 
-      <!-- Telefone Column -->
-      <ng-container matColumnDef="telefone">
-        <th mat-header-cell *matHeaderCellDef> Telefone </th>
-        <td mat-cell *matCellDef="let professor"> {{professor.telefone}} </td>
-      </ng-container>
-
-      <!-- Email Column -->
-      <ng-container matColumnDef="email">
-        <th mat-header-cell *matHeaderCellDef> Email </th>
-        <td mat-cell *matCellDef="let professor"> {{professor.email}} </td>
-      </ng-container>
-
-      <!-- Disciplina Column -->
-      <ng-container matColumnDef="disciplina">
-        <th mat-header-cell *matHeaderCellDef> Disciplina </th>
-        <td mat-cell *matCellDef="let professor"> {{professor.disciplina}} </td>
-      </ng-container>
-
-      <!-- Açoes Column -->
-      <ng-container matColumnDef="acao">
-        <th mat-header-cell *matHeaderCellDef> Ações </th>
-        <td mat-cell *matCellDef="let professor">
-          <button mat-icon-button color="primary" matTooltip="Informações">
-            <mat-icon>info</mat-icon>
+      </form>
+      <div>
+        <mat-card-actions align="end">
+          <button
+            mat-raised-button
+            color="primary"
+            [disabled]="!professorFormDetalhes.valid"
+            class="btn-margem"
+          >
+            Salvar
           </button>
-          <button mat-icon-button color="primary" matTooltip="Editar">
-            <mat-icon>edit</mat-icon>
-          </button>
-          <button mat-icon-button color="accent" matTooltip="Excluir">
-            <mat-icon>delete</mat-icon>
-          </button>
-        </td>
-      </ng-container>
+          <button mat-raised-button color="accent" class="btn-margem">Editar</button>
+          <button mat-raised-button color="warn" class="btn-margem">Desativar</button>
+        </mat-card-actions>
+      </div>
+    </div>
 
-      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    <div fxFlex *ngIf="_professor | async as professor; else load">
+      <mat-table  [dataSource]="professor" class="mat-elevation-z8" >
+        <!-- Id Column -->
+        <ng-container matColumnDef="Id" >
+          <mat-header-cell  *matHeaderCellDef >ID</mat-header-cell>
+          <mat-cell  *matCellDef="let professor">{{ professor.Id }}</mat-cell>
+        </ng-container>
 
-    </table>
+        <!-- Nome Column -->
+        <ng-container matColumnDef="nome">
+          <mat-header-cell  *matHeaderCellDef>Nome</mat-header-cell>
+          <mat-cell  *matCellDef="let professor">{{ professor.nome }}</mat-cell>
+        </ng-container>
+
+        <!-- Sobrenome Column -->
+        <ng-container matColumnDef="sobrenome">
+          <mat-header-cell  *matHeaderCellDef>Sobrenome</mat-header-cell>
+          <mat-cell  *matCellDef="let professor">{{ professor.sobrenome }}</mat-cell>
+        </ng-container>
+
+        <!-- Telefone Column -->
+        <ng-container matColumnDef="telefone">
+          <mat-header-cell  *matHeaderCellDef><mat-icon>phone</mat-icon> Telefone</mat-header-cell>
+          <mat-cell *matCellDef="let professor">
+            {{ professor.telefone }}
+
+          </mat-cell>
+        </ng-container>
+
+        <!-- Email Column -->
+        <ng-container matColumnDef="email">
+          <mat-header-cell  *matHeaderCellDef><mat-icon>email</mat-icon>Email</mat-header-cell>
+          <mat-cell *matCellDef="let professor">
+            {{ professor.email }}
+
+          </mat-cell>
+        </ng-container>
+
+        <!-- Disciplina Column -->
+        <ng-container matColumnDef="disciplina">
+          <mat-header-cell  *matHeaderCellDef><mat-icon>book</mat-icon>Disciplina</mat-header-cell>
+          <mat-cell *matCellDef="let professor">
+            {{ professor.disciplina }}
+
+          </mat-cell>
+        </ng-container>
+
+        <!-- Açoes Column -->
+        <ng-container matColumnDef="acao" >
+          <mat-header-cell *matHeaderCellDef >
+            <button
+              mat-mini-fab
+              color="primary"
+              aria-label="Adicionar mais Professores"
+              matTooltip="Adicionar Professores"
+              (click)="onAdd()"
+
+            >
+              <mat-icon>plus_one</mat-icon>
+            </button>
+          </mat-header-cell>
+          <mat-cell *matCellDef="let aluno" >
+            <button mat-icon-button color="primary" matTooltip="Professores">
+              <mat-icon>face</mat-icon>
+            </button>
+            <button mat-icon-button color="primary" matTooltip="Disciplinas">
+              <mat-icon>book</mat-icon>
+            </button>
+            <button mat-icon-button color="accent" matTooltip="Desabilitar">
+              <mat-icon>delete</mat-icon>
+            </button>
+          </mat-cell>
+        </ng-container>
+
+        <mat-header-row  *matHeaderRowDef="displayedColumns"></mat-header-row >
+        <mat-row
+
+          (click)="ProfessorSelecionado(row)"
+          *matRowDef="let row; columns: displayedColumns"
+        ></mat-row>
+      </mat-table>
+    </div>
+
+    <ng-template #load>
+      <div class="spiner">
+        <mat-spinner></mat-spinner>
+      </div>
+    </ng-template>
   </mat-card-content>
 </mat-card>
-
-
-
-
-
-
-

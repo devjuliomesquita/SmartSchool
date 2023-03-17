@@ -1,5 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { Professor } from './model/professor';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Observable, catchError, of } from 'rxjs';
+import { ProfessorService } from './service/professor.service';
+import { MatDialog } from '@angular/material/dialog';
+import { ActivatedRoute, Router } from '@angular/router';
+import { ErrorDialogComponent } from '../error-dialog/error-dialog.component';
 
 @Component({
   selector: 'app-professores',
@@ -7,24 +13,57 @@ import { Professor } from './model/professor';
   styleUrls: ['./professores.component.css']
 })
 export class ProfessoresComponent implements OnInit {
-  public titulo:string = 'Lista de Professores';
-
-  public professores: Professor[] = [
-    {Id: 1, nome: "Júlio César", sobrenome: "Mesquita Camilo", telefone: "85 996816053", email: "juliocesarmcamilo@gmail.com", disciplina: "Matemática" },
-    {Id: 2, nome: "Júlio César", sobrenome: "Mesquita Camilo", telefone: "85 996816053", email: "juliocesarmcamilo@gmail.com", disciplina: "Português" },
-    {Id: 3, nome: "Júlio César", sobrenome: "Mesquita Camilo", telefone: "85 996816053", email: "juliocesarmcamilo@gmail.com", disciplina: "Física" },
-    {Id: 4, nome: "Júlio César", sobrenome: "Mesquita Camilo", telefone: "85 996816053", email: "juliocesarmcamilo@gmail.com", disciplina: "Química" },
-    {Id: 5, nome: "Júlio César", sobrenome: "Mesquita Camilo", telefone: "85 996816053", email: "juliocesarmcamilo@gmail.com", disciplina: "Geografia" },
-    {Id: 6, nome: "Júlio César", sobrenome: "Mesquita Camilo", telefone: "85 996816053", email: "juliocesarmcamilo@gmail.com", disciplina: "História" },
-    {Id: 7, nome: "Júlio César", sobrenome: "Mesquita Camilo", telefone: "85 996816053", email: "juliocesarmcamilo@gmail.com", disciplina: "Programação" },
-    {Id: 8, nome: "Júlio César", sobrenome: "Mesquita Camilo", telefone: "85 996816053", email: "juliocesarmcamilo@gmail.com", disciplina: "Biologia" },
-  ];
-
+  public professorFormDetalhes!: FormGroup;
+  public titulo:string = 'Área do Professor';
+  public _professor: Observable<Professor[]>;
+  public professorSelecionado?:Professor;
   displayedColumns = ['Id', 'nome', 'sobrenome', 'telefone', 'email', 'disciplina', 'acao'];
 
-  constructor() { }
+
+  constructor(
+    private fb: FormBuilder,
+    private professorService: ProfessorService,
+    public dialog: MatDialog,
+    private router: Router,
+    private route: ActivatedRoute
+    ) {
+    this.CriarFormulario();
+    this._professor = this.professorService.ProfessorList().pipe(
+      catchError((error) => {
+        this.onError('Erro ao carregar os alunos.');
+        return of([]);
+      })
+    );
+  }
 
   ngOnInit() {
   }
 
+  ProfessorSelecionado(professor: Professor){
+    this.professorSelecionado = professor;
+    this.professorFormDetalhes.patchValue(professor);
+    this.displayedColumns = ['Id', 'nome', 'sobrenome', 'telefone'];
+  }
+  ProfessorDeselecionado():void{
+    this.professorSelecionado = undefined;
+    this.displayedColumns.push('email', 'disciplina', 'acao');
+  }
+  CriarFormulario(){
+    this.professorFormDetalhes = this.fb.group({
+      nome: ['', Validators.required],
+      sobrenome: ['', Validators.required],
+      telefone: ['', Validators.required],
+      email: ['', Validators.required],
+      disciplina: ['', Validators.required],
+    });
+  }
+  onError(errorMsg: string) {
+    this.dialog.open(ErrorDialogComponent, {
+      data: errorMsg,
+    });
+  }
+  onAdd() {
+    this.router.navigate(['form'], { relativeTo: this.route });
+    // console.log('teste');
+  }
 }
