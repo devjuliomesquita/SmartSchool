@@ -9,6 +9,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 export class AlunosformComponent implements OnInit {
 
   alunoForm: FormGroup;
+  public titulo: string = 'Formulário para cadastro de novos Alunos';
   constructor( private formBuilder: FormBuilder) {
     this.alunoForm = this.formBuilder.group({
       nome: ['', Validators.required],

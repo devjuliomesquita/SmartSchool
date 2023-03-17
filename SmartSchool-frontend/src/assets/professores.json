@@ -1,0 +1,10 @@
+[
+  {"Id": "1", "nome": "Júlio César", "sobrenome": "Mesquita Camilo", "telefone": "85 996816053", "email": "juliocesarmcamilo@gmail.com", "disciplina": "Matemática" },
+    {"Id": "2", "nome": "Amanda Maria", "sobrenome": "Martins de Sousa", "telefone": "85 994010610", "email": "amanda@gmail.com", "disciplina": "Português" },
+    {"Id": "3", "nome": "Wesley", "sobrenome": "Emanuel", "telefone": "85 987654321", "email": "wesley@gmail.com", "disciplina": "Biologia" },
+    {"Id": "4", "nome": "Thais", "sobrenome": "Martins Mesquita", "telefone": "85 912345678", "email": "thaiscocada@gmail.com", "disciplina": "História" },
+    {"Id": "5", "nome": "Thais", "sobrenome": "Lucas Oliveira", "telefone": "85 999998877", "email": "thaislucas@gmail.com", "disciplina": "Física" },
+    {"Id": "6", "nome": "Manassés", "sobrenome": "Oliveira", "telefone": "85 988776655", "email": "manasses@gmail.com", "disciplina": "Química" },
+    {"Id": "7", "nome": "João Lucas", "sobrenome": "Silva Santos", "telefone": "85 911112345", "email": "joaosilva@gmail.com", "disciplina": "Geografia" },
+    {"Id": "8", "nome": "Wynny Natielle", "sobrenome": "Vicente Paula", "telefone": "85 981711579", "email": "natielly@gmail.com", "disciplina": "Programação" }
+]
