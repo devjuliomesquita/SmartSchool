@@ -27,11 +27,14 @@ import { HttpClientModule } from '@angular/common/http';
 import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 import { ErrorDialogComponent } from './error-dialog/error-dialog.component';
 import { AlunosformComponent } from './alunosform/alunosform.component';
+import { ProfessorformComponent } from './professoresform/professorform.component';
+import {MatChipsModule} from '@angular/material/chips';
+import {MatAutocompleteModule} from '@angular/material/autocomplete';
 
 
 
 @NgModule({
-  declarations: [		
+  declarations: [
     AppComponent,
       NavegacaoComponent,
       AlunosComponent,
@@ -40,7 +43,8 @@ import { AlunosformComponent } from './alunosform/alunosform.component';
       DashboardComponent,
       TituloComponent,
       ErrorDialogComponent,
-      AlunosformComponent
+      AlunosformComponent,
+      ProfessorformComponent
    ],
   imports: [
     BrowserModule,
@@ -60,7 +64,9 @@ import { AlunosformComponent } from './alunosform/alunosform.component';
     ReactiveFormsModule,
     MatDialogModule,
     HttpClientModule,
-    MatProgressSpinnerModule
+    MatProgressSpinnerModule,
+    MatChipsModule,
+    MatAutocompleteModule
   ],
   providers: [],
   bootstrap: [AppComponent]
