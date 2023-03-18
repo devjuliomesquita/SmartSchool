@@ -12,6 +12,8 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
 using WebAPI_s.Models;
 using WebAPI_s.Token;
+using WebAPI_s.Models;
+using WebAPI_s.Token;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -22,7 +24,7 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
-//ConfigServices
+// ConfigServices
 builder.Services.AddDbContext<ContextBase>(options =>
               options.UseSqlServer(
                   builder.Configuration.GetConnectionString("DefaultConnection")));
@@ -81,7 +83,6 @@ var config = new AutoMapper.MapperConfiguration(cfg =>
 IMapper mapper = config.CreateMapper();
 builder.Services.AddSingleton(mapper);
 
-
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
@@ -90,6 +91,7 @@ if (app.Environment.IsDevelopment())
     app.UseSwagger();
     app.UseSwaggerUI();
 }
+
 //var urlDev = "https://dominiodocliente.com.br";
 //var urlHML = "https://dominiodocliente2.com.br";
 //var urlPROD = "https://dominiodocliente3.com.br";
@@ -102,7 +104,9 @@ app.UseCors(x => x
 .AllowAnyMethod()
 .AllowAnyHeader().WithOrigins(devClient));
 
+
 app.UseHttpsRedirection();
+
 app.UseAuthentication();
 app.UseAuthorization();
 
