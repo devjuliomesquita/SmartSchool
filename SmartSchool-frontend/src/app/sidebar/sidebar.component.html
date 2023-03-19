@@ -1,0 +1,35 @@
+<div class="navbar">
+
+  <div class="user">
+      <img src="./assets/julio-imag.jpeg" alt="">
+      <h4 class="name">admin</h4>
+      <p class="mail">admin@gmail.com</p>
+  </div>
+  <div class="menu">
+      <div class="menu-head">
+          <span>Smart Menu</span>
+      </div>
+      <div class="menu-item" fxLayout="column" fxLayoutAlign="center start">
+          <button mat-button class="menu-button" [routerLink]="['/dashboard']">
+              <mat-icon>dashboard</mat-icon>
+              <span>Home</span>
+          </button>
+          <button mat-button class="menu-button" [routerLink]="['/alunos']">
+              <mat-icon>face</mat-icon>
+              <span>Alunos</span>
+          </button>
+          <button mat-button class="menu-button" [routerLink]="['/professores']">
+              <mat-icon>person</mat-icon>
+              <span>Professores</span>
+          </button>
+          <button mat-button class="menu-button">
+              <mat-icon>book</mat-icon>
+              <span>Disciplinas</span>
+          </button>
+          <button mat-button class="menu-button">
+              <mat-icon>settings</mat-icon>
+              <span>Perfil</span>
+          </button>
+      </div>
+  </div>
+</div>

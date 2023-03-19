@@ -33,11 +33,13 @@ import {MatAutocompleteModule} from '@angular/material/autocomplete';
 import { CancelDialogComponent } from './cancel-dialog/cancel-dialog.component';
 import { CursoDialogComponent } from './curso-dialog/curso-dialog.component';
 import { AlunoProfessorDialogComponent } from './alunoProfessor-dialog/alunoProfessor-dialog.component';
+import {MatSidenavModule} from '@angular/material/sidenav';
+import { SidebarComponent } from './sidebar/sidebar.component';
 
 
 
 @NgModule({
-  declarations: [			
+  declarations: [	
     AppComponent,
       NavegacaoComponent,
       AlunosComponent,
@@ -50,7 +52,8 @@ import { AlunoProfessorDialogComponent } from './alunoProfessor-dialog/alunoProf
       ProfessorformComponent,
       CancelDialogComponent,
       CursoDialogComponent,
-      AlunoProfessorDialogComponent
+      AlunoProfessorDialogComponent,
+      SidebarComponent
    ],
   imports: [
     BrowserModule,
@@ -72,7 +75,8 @@ import { AlunoProfessorDialogComponent } from './alunoProfessor-dialog/alunoProf
     HttpClientModule,
     MatProgressSpinnerModule,
     MatChipsModule,
-    MatAutocompleteModule
+    MatAutocompleteModule,
+    MatSidenavModule
   ],
   providers: [],
   bootstrap: [AppComponent]
