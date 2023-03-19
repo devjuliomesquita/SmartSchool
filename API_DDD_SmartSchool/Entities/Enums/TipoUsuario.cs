@@ -8,8 +8,7 @@ namespace Entities.Enums
 {
     public enum TipoUsuario
     {
-        Administrador = 1,
-        Ãluno = 2,
-        Porfessor = 3,
+        Administrador = 1, 
+        Comum = 2
     }
 }

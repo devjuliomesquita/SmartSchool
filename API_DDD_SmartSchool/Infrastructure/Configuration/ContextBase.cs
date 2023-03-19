@@ -1,7 +1,6 @@
 ﻿using Entities.Entities;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.EntityFrameworkCore.Internal;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -23,7 +22,7 @@ namespace Infrastructure.Configuration
         {
             if (!optionsBuilder.IsConfigured)
             {
-                optionsBuilder.UseSqlServer(ObterStringDeConexao());
+                optionsBuilder.UseSqlServer(ObterStringConexao());
                 base.OnConfiguring(optionsBuilder);
             }
         }
@@ -35,9 +34,12 @@ namespace Infrastructure.Configuration
 
             base.OnModelCreating(builder);
         }
-        public string ObterStringDeConexao()
+
+
+        public string ObterStringConexao()
         {
-            return "Data Source=localhost\\SQLEXPRESS;Initial Catalog=API_DDD_2022;Integrated Security=False;User ID=sa;Password=Jcam@1507;Connect Timeout=15;Encrypt=False;TrustServerCertificate=False";
+           return  "Data Source=localhost\\SQLEXPRESS;Initial Catalog=API_DDD_2022;Integrated Security=False;User ID=sa;Password=Jcam@1507;Connect Timeout=15;Encrypt=False;TrustServerCertificate=False";
         }
+
     }
 }

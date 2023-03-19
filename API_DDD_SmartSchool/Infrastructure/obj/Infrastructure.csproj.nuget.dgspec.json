@@ -4,14 +4,14 @@
     "C:\\Users\\julio.martins\\Documents\\GitHub\\SmartSchool\\API_DDD_SmartSchool\\Infrastructure\\Infrastructure.csproj": {}
   },
   "projects": {
-    "C:\\Users\\julio.martins\\Documents\\GitHub\\SmartSchool\\API_DDD_SmartSchool\\Dimain\\Domain.csproj": {
+    "C:\\Users\\julio.martins\\Documents\\GitHub\\SmartSchool\\API_DDD_SmartSchool\\Domain\\Domain.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\julio.martins\\Documents\\GitHub\\SmartSchool\\API_DDD_SmartSchool\\Dimain\\Domain.csproj",
+        "projectUniqueName": "C:\\Users\\julio.martins\\Documents\\GitHub\\SmartSchool\\API_DDD_SmartSchool\\Domain\\Domain.csproj",
         "projectName": "Domain",
-        "projectPath": "C:\\Users\\julio.martins\\Documents\\GitHub\\SmartSchool\\API_DDD_SmartSchool\\Dimain\\Domain.csproj",
+        "projectPath": "C:\\Users\\julio.martins\\Documents\\GitHub\\SmartSchool\\API_DDD_SmartSchool\\Domain\\Domain.csproj",
         "packagesPath": "C:\\Users\\julio.martins\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\julio.martins\\Documents\\GitHub\\SmartSchool\\API_DDD_SmartSchool\\Dimain\\obj\\",
+        "outputPath": "C:\\Users\\julio.martins\\Documents\\GitHub\\SmartSchool\\API_DDD_SmartSchool\\Domain\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -47,28 +47,6 @@
       "frameworks": {
         "net6.0": {
           "targetAlias": "net6.0",
-          "dependencies": {
-            "Microsoft.AspNetCore.Identity.EntityFrameworkCore": {
-              "target": "Package",
-              "version": "[6.0.15, )"
-            },
-            "Microsoft.EntityFrameworkCore.Design": {
-              "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
-              "suppressParent": "All",
-              "target": "Package",
-              "version": "[6.0.15, )"
-            },
-            "Microsoft.EntityFrameworkCore.SqlServer": {
-              "target": "Package",
-              "version": "[6.0.15, )"
-            },
-            "Microsoft.EntityFrameworkCore.Tools": {
-              "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
-              "suppressParent": "All",
-              "target": "Package",
-              "version": "[6.0.15, )"
-            }
-          },
           "imports": [
             "net461",
             "net462",
@@ -129,29 +107,21 @@
         "net6.0": {
           "targetAlias": "net6.0",
           "dependencies": {
-            "Microsoft.AspNetCore.Identity.EntityFrameworkCore": {
-              "target": "Package",
-              "version": "[6.0.15, )"
-            },
             "Microsoft.EntityFrameworkCore.Design": {
               "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
               "suppressParent": "All",
               "target": "Package",
-              "version": "[6.0.15, )"
-            },
-            "Microsoft.EntityFrameworkCore.SqlServer": {
-              "target": "Package",
-              "version": "[6.0.15, )"
+              "version": "[6.0.7, )"
             },
             "Microsoft.EntityFrameworkCore.Tools": {
               "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
               "suppressParent": "All",
               "target": "Package",
-              "version": "[6.0.15, )"
+              "version": "[6.0.7, )"
             },
             "Microsoft.Extensions.Identity.Stores": {
               "target": "Package",
-              "version": "[6.0.15, )"
+              "version": "[6.0.7, )"
             }
           },
           "imports": [
@@ -202,8 +172,8 @@
           "net6.0": {
             "targetAlias": "net6.0",
             "projectReferences": {
-              "C:\\Users\\julio.martins\\Documents\\GitHub\\SmartSchool\\API_DDD_SmartSchool\\Dimain\\Domain.csproj": {
-                "projectPath": "C:\\Users\\julio.martins\\Documents\\GitHub\\SmartSchool\\API_DDD_SmartSchool\\Dimain\\Domain.csproj"
+              "C:\\Users\\julio.martins\\Documents\\GitHub\\SmartSchool\\API_DDD_SmartSchool\\Domain\\Domain.csproj": {
+                "projectPath": "C:\\Users\\julio.martins\\Documents\\GitHub\\SmartSchool\\API_DDD_SmartSchool\\Domain\\Domain.csproj"
               },
               "C:\\Users\\julio.martins\\Documents\\GitHub\\SmartSchool\\API_DDD_SmartSchool\\Entities\\Entities.csproj": {
                 "projectPath": "C:\\Users\\julio.martins\\Documents\\GitHub\\SmartSchool\\API_DDD_SmartSchool\\Entities\\Entities.csproj"
@@ -223,23 +193,11 @@
           "dependencies": {
             "Microsoft.AspNetCore.Identity.EntityFrameworkCore": {
               "target": "Package",
-              "version": "[6.0.15, )"
-            },
-            "Microsoft.EntityFrameworkCore.Design": {
-              "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
-              "suppressParent": "All",
-              "target": "Package",
-              "version": "[6.0.15, )"
+              "version": "[6.0.7, )"
             },
             "Microsoft.EntityFrameworkCore.SqlServer": {
               "target": "Package",
-              "version": "[6.0.15, )"
-            },
-            "Microsoft.EntityFrameworkCore.Tools": {
-              "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
-              "suppressParent": "All",
-              "target": "Package",
-              "version": "[6.0.15, )"
+              "version": "[6.0.7, )"
             }
           },
           "imports": [
