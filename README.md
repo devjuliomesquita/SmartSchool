@@ -1,4 +1,5 @@
 # API DevMessagem
+[![NPM](https://img.shields.io/npm/l/react)](https://github.com/devjuliomesquita/SmartSchool/blob/main/LICENSE.txt) 
 
 Foi desenvolvida uma API REST completa de cadastro de usuários e mensagens. 
 
